@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>London & UK — Matt & Claire — 10–22 Dec 2026</title>
+<style>
+:root{--green:#1f3d2e;--green2:#2c5540;--burg:#7a2e2e;--cream:#f7f2e9;--card:#ffffff;--ink:#26221c;--muted:#7d7568;--gold:#b98d3e;--line:#e5ddd0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+header{background:var(--green);color:var(--cream);padding:22px 16px 14px;text-align:center}
+header h1{font-size:1.35rem;letter-spacing:.5px}
+header p{font-size:.85rem;opacity:.85;margin-top:4px}
+nav{position:sticky;top:0;z-index:50;background:var(--green2);display:flex;overflow-x:auto}
+nav button{flex:1;min-width:110px;background:none;border:none;color:var(--cream);padding:13px 8px;font-size:.9rem;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav button.active{border-bottom-color:var(--gold);background:rgba(255,255,255,.08);font-weight:600}
+main{max-width:900px;margin:0 auto;padding:18px 14px 80px}
+.tab{display:none}.tab.active{display:block}
+h2{font-size:1.15rem;color:var(--green);margin:18px 0 10px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.day summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:baseline}
+.day summary::-webkit-details-marker{display:none}
+.day .dnum{background:var(--green);color:#fff;border-radius:8px;font-size:.72rem;padding:3px 8px;white-space:nowrap}
+.day .dtitle{font-weight:700}
+.day .dsub{font-size:.8rem;color:var(--muted);width:100%}
+.day .body{padding:0 16px 14px;border-top:1px solid var(--line)}
+.slot{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.slot:last-child{border-bottom:none}
+.slot .t{color:var(--burg);font-weight:700;min-width:52px;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;background:#fdf3e3;color:#8a6410;border:1px solid #e8d3a5;border-radius:6px;font-size:.7rem;padding:1px 6px;margin-left:4px;vertical-align:middle}
+.badge.red{background:#fbeaea;color:#8a2b2b;border-color:#e5b8b8}
+a{color:var(--green2)}
+.note{font-size:.8rem;color:var(--muted);margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:.85rem;background:var(--card);border-radius:10px;overflow:hidden}
+th{background:var(--green);color:#fff;text-align:left;padding:8px 6px;font-size:.75rem}
+td{border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
+td input[type=text],td input[type=number]{width:100%;border:1px solid var(--line);border-radius:6px;padding:5px;font-size:.85rem;background:#fffdf8}
+td select{width:100%;border:1px solid var(--line);border-radius:6px;padding:5px;font-size:.85rem;background:#fffdf8}
+.wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--line)}
+#settle{background:var(--green);color:var(--cream);border-radius:12px;padding:16px;margin-top:16px}
+#settle .big{font-size:1.15rem;font-weight:700;margin-top:8px;color:#ffe9b8}
+.btn{background:var(--burg);color:#fff;border:none;border-radius:8px;padding:9px 14px;font-size:.85rem;cursor:pointer;margin:10px 6px 0 0}
+.btn.g{background:var(--green2)}
+.bs{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:12px 14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.bs input[type=checkbox]{margin-top:4px;transform:scale(1.3)}
+.bs.done{opacity:.5}.bs.done .a{text-decoration:line-through}
+.bs .dl{font-size:.75rem;color:var(--burg);font-weight:700}
+.bs .a{font-weight:600;font-size:.92rem}
+.bs .w{font-size:.8rem;color:var(--muted)}
+.info{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.info h3{color:var(--green);font-size:.95rem;margin-bottom:8px}
+.info ul{padding-left:18px;font-size:.88rem}
+.info li{margin-bottom:5px}
+.small{font-size:.75rem;color:var(--muted);margin-top:10px}
+.syncbadge{position:fixed;right:10px;bottom:10px;z-index:100;font-size:.72rem;padding:6px 10px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--muted);box-shadow:0 2px 8px rgba(0,0,0,.12);cursor:pointer}
+.syncbadge.ok{background:#eef6ef;color:#2c5540;border-color:#c8e0cd}
+.syncbadge.busy{background:#fdf3e3;color:#8a6410;border-color:#e8d3a5}
+.syncbadge.off{background:#fbeaea;color:#8a2b2b;border-color:#e5b8b8}
+@media print{nav,.btn{display:none}.tab{display:block!important}.day{page-break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎄 London &amp; UK Winter Trip</h1>
+  <p>Matt &amp; Claire · Thu 10 – Tue 22 Dec 2026 · London → Manchester → Chatsworth → Pitlochry → Lake District → London</p>
+</header>
+<nav>
+  <button class="active" onclick="tab(event,'t1')">🏠 Itinerary</button>
+  <button onclick="tab(event,'t2')">💷 Bookings &amp; Money</button>
+  <button onclick="tab(event,'t3')">⏰ Book Soon</button>
+  <button onclick="tab(event,'t4')">ℹ️ Trip Info</button>
+</nav>
+<main>
+
+<!-- ================= TAB 1 ITINERARY ================= -->
+<section id="t1" class="tab active">
+<h2>Day-by-Day Itinerary</h2>
+
+<details class="day" open><summary><span class="dnum">DAY 1 · THU 10</span><span class="dtitle">Arrive London — Marylebone landing</span></summary><div class="body">
+<div class="slot"><span class="t">15:20</span><span>Land LHR. eGates (SG passport OK) + bags → landside ~16:20–16:40.</span></div>
+<div class="slot"><span class="t">16:45</span><span><b>Elizabeth line direct to Paddington</b> (~£13 pp, ~35 min, step-free with big cases) — the hotel is at the station. Skip taxis.</span></div>
+<div class="slot"><span class="t">17:30</span><span>Check in: <b>Novotel London Paddington</b> (1 night tonight; same hotel 4 nights on return — book direct on Accor with ALL login, member rate + points).</span></div>
+<div class="slot"><span class="t">18:45</span><span>Canal-side stroll at Merchant Square; if energy allows, 10 min on to <b>Little Venice</b> under the lights.</span></div>
+<div class="slot"><span class="t">19:30</span><span>Easy first-night dinner: <b>The Union</b>, Sheldon Square — canal-side gastropub 2 min from the hotel. One pint. Bed by 22:00 — jet lag pulls you early; tomorrow is an 08:00 start.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 2 · FRI 11</span><span class="dtitle">Drive north early + Manchester markets &amp; food crawl</span></summary><div class="body">
+<div class="slot"><span class="t">07:30</span><span>Check out with all luggage; 5-min cab from the Novotel to <b>Enterprise Marylebone</b>, NCP Car Park, 170 Marylebone Rd NW1 5AR.</span></div>
+<div class="slot"><span class="t">08:00</span><span><b>Collect car at opening.</b> Automatic SUV/crossover, under 2.10m tall. On the road by 08:30. (Being in Manchester tonight kills ALL kickoff-change risk — even a 12:30 KO is now just an earlier tram.)</span></div>
+<div class="slot"><span class="t">08:30</span><span>M40→M6, ~4h + Friday buffer. One services stop ~10:30.</span></div>
+<div class="slot"><span class="t">13:00</span><span>Arrive <b>Native Manchester</b> (Ducie St). Park on-site (£25/24h, pre-book YourParkingSpace, 2.10m limit). Bags in car until 15:00 check-in — or check in mid-crawl.</span></div>
+<div class="slot"><span class="t">13:30</span><span><b>Must-eat: SpudBros</b> — the viral loaded jacket potato, first Manchester shop just off Market Street <span class="badge">⚠ opening date unannounced — check @spudbros before; backup = the original Preston tram on Monday's drive</span>. Lunch, in-hand.</span></div>
+<div class="slot"><span class="t">14:15</span><span><b>Manchester Christmas Markets crawl</b> — the big one you thought you'd miss: Albert Square (main hub at the Town Hall), St Ann's Square, Market Street, King Street. Glühwein, bratwurst, the works. Stalls to ~20:00 <span class="badge">⚠ 2026 hours TBC</span>.</span></div>
+<div class="slot"><span class="t">17:30</span><span>Check in properly, unload, rest.</span></div>
+<div class="slot"><span class="t">19:30</span><span>Easy dinner night — Rudy's Ancoats pizza (8 min) or graze more market stalls; NQ nightcap if legs allow. Big two days follow — save some petrol.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 3 · SAT 12</span><span class="dtitle">MATCH DAY — Tunnel Club, City vs Chelsea</span></summary><div class="body">
+<div class="slot"><span class="t">09:30</span><span>Lazy start, then <b>must-eat: bagels at Federal</b>, Nicholas Croft NQ (the famous smoked-salmon bagel with dukkah + hollandaise; expect a short queue) — 7 min walk. <i>If KO gets moved to 12:30 (doors 09:30): grab the bagels takeaway at 08:45 and tram at 09:00 — the plan bends, nothing breaks.</i></span></div>
+<div class="slot"><span class="t">11:20</span><span>Walk 3 min → Piccadilly, tram to Etihad Campus (~15 min) or £10 cab.</span></div>
+<div class="slot"><span class="t">11:50</span><span><b>West Reception, Colin Bell Stand</b>. Doors 12:00 (3h before KO). ✅ Hospitality BOOKED.</span></div>
+<div class="slot"><span class="t">15:00</span><span>Kick-off — City vs Chelsea <span class="badge red">⚠ KO time TV-confirmed late Oct — if it becomes 12:30, switch to Plan B: drive up Fri night</span></span></div>
+<div class="slot"><span class="t">18:45</span><span>Full time. Exit: walk to <b>Velopark stop</b> (beats the crush) or 25-min canal towpath to Piccadilly.</span></div>
+<div class="slot"><span class="t">19:45</span><span>Back at Native, shower, change.</span></div>
+<div class="slot"><span class="t">20:30</span><span>Dinner: <b>Erst</b>, Ancoats (2 min walk) — book for 20:30. Backup: The Edinburgh Castle.</span></div>
+<div class="slot"><span class="t">22:30</span><span>Northern Quarter: Night &amp; Day Café · The Whiskey Jar · Escape to Freight Island (Winter Island).</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 4 · SUN 13</span><span class="dtitle">Chatsworth Christmas — market's final day</span></summary><div class="body">
+<div class="slot"><span class="t">09:00</span><span><b>Full English #1 — The Koffee Pot</b>, Oldham St (arrive AT 9:00 open; queue after). Backup: Trof, Thomas St.</span></div>
+<div class="slot"><span class="t">10:30</span><span>Drive A623, ~1h15 → Chatsworth.</span></div>
+<div class="slot"><span class="t">11:45</span><span><b>Christmas at Chatsworth bundle (£40pp)</b>: market + parking + decorated house + garden light trail. Market graze = lunch (pork cobs, mulled cider). <span class="badge">⚠ 2026 tickets not on sale yet — newsletter alert set</span> <a href="https://www.chatsworth.org/events/christmas/">chatsworth.org</a></span></div>
+<div class="slot"><span class="t">14:00</span><span>The decorated house (2026 theme announced Sept).</span></div>
+<div class="slot"><span class="t">15:45</span><span>Garden <b>light trail</b> at dusk — save it for dark. Market glow after.</span></div>
+<div class="slot"><span class="t">17:00</span><span>Depart. Direct A623 home (Winnats Pass = skip: 28% gradient, unlit, ice risk).</span></div>
+<div class="slot"><span class="t">18:30</span><span><b>Piccadilly Gardens Christmas Market</b> (2 min from Native) — street-food dinner + mulled wine (Sun food stalls to ~21:00 <span class="badge">⚠ 2026 hours TBC</span>). Sit-down backup: Rudy's Ancoats (to 21:00).</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 5 · MON 14</span><span class="dtitle">North! Manchester → Tebay → Pitlochry</span></summary><div class="body">
+<div class="slot"><span class="t">08:30</span><span>Depart (coffee only). M61→M6 north, 1h40.</span></div>
+<div class="slot"><span class="t">09:20</span><span><i>Optional insurance stop:</i> if SpudBros Manchester wasn't open Friday, the <b>original SpudBros tram</b> is on Preston's Flag Market — ~15 min off M6 J31 <span class="badge">⚠ check tram opening time before detouring</span>.</span></div>
+<div class="slot"><span class="t">10:15</span><span><b>Tebay Services northbound (J38)</b> — brunch in the Kitchen + Farmshop shop: butchery, cheese, bread (better than Co-op for the good stuff). 45 min.</span></div>
+<div class="slot"><span class="t">11:00</span><span>M6 over Shap → M74 → M80 → A9. ~3.5h. Total day ~5h driving.</span></div>
+<div class="slot"><span class="t">14:45</span><span>Arrive <b>Pitlochry Retreat</b> (self check-in smartlock from 15:00; free street parking outside; 12 steps down with cases).</span></div>
+<div class="slot"><span class="t">15:30</span><span>Town at golden hour → dark: high street Christmas lights, Co-op for basics, first dram.</span></div>
+<div class="slot"><span class="t">19:00</span><span>Dinner: <b>Auld Smiddy Inn</b> — <b>haggis, neeps &amp; tatties</b> (must-eat). Verified open Mondays. Backup: Victoria's.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 6 · TUE 15</span><span class="dtitle">Perthshire — Dunkeld, Hermitage, drams</span></summary><div class="body">
+<div class="slot"><span class="t">09:10</span><span>Drive 15 min → Dunkeld.</span></div>
+<div class="slot"><span class="t">09:30</span><span><b>Aran Bakery at opening</b> (sells out!) <span class="badge">⚠ confirm Tue hours: 01350 727029</span>. Then Dunkeld Smoked Salmon shop (takeaway — tonight's starter), cathedral, the square's indie shops.</span></div>
+<div class="slot"><span class="t">11:00</span><span><b>The Hermitage</b> (NTS, ~PH8 0JR, £5 parking): riverside path → Ossian's Hall over Black Linn Falls. Add Rumbling Bridge extension if fresh. Boots — paths ungritted.</span></div>
+<div class="slot"><span class="t">13:00</span><span>Lunch: <b>The Taybank</b>, riverside Dunkeld (Tue lunch 12:00–14:45). <a href="https://www.thetaybank.co.uk/">Book</a></span></div>
+<div class="slot"><span class="t">14:30</span><span>Fork: <b>Killiecrankie</b> Soldier's Leap loop (1.5h, PH16 5LQ) and/or <b>Blair Athol Distillery</b> dram at the Mash Tun bar (bar to 16:45) <span class="badge">⚠ Dec tour slots release ~6 months out — 01796 482003</span></span></div>
+<div class="slot"><span class="t">17:00</span><span>Walk home through Pitlochry's Winter Lighting (60+ installations, Atholl Rd).</span></div>
+<div class="slot"><span class="t">19:00</span><span><b>Cook-in night</b>: Tebay haul + Dunkeld salmon + Aran sourdough. Laundry on. Nightcap: The Old Mill Inn (walkable).</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 7 · WED 16</span><span class="dtitle">Pitlochry → Moffat → the cabin</span></summary><div class="body">
+<div class="slot"><span class="t">10:00</span><span>Depart. A9 → M9/M80 → M74. ~190–205 mi total today.</span></div>
+<div class="slot"><span class="t">12:15</span><span>Lunch: <b>Moffat</b> — real Borders town 2 min off the M74 (Brodies / Craigielands). Walk the high street.</span></div>
+<div class="slot"><span class="t">14:45</span><span><b>Booths Penrith</b> (Brunswick Rd, CA11 7JU) — the big shop: Cumberland sausage, Cumbrian lamb, cheese, wine + <b>Cartmel Sticky Toffee Pudding</b> (dessert insurance). Threlkeld comes BEFORE Keswick — no backtrack.</span></div>
+<div class="slot"><span class="t">16:00</span><span>Check in <b>Clough Head Cabin</b> (from 16:00 — sunset 15:46, <b>torch ready</b>, rural farm track, fine in the SUV). Hosts: Fiona &amp; Mark, Near Howe Cottages.</span></div>
+<div class="slot"><span class="t">17:00</span><span>Fire lit. If hot tub is self-fired, light it NOW (wood tubs need 2–3h) <span class="badge">⚠ confirm with host</span>.</span></div>
+<div class="slot"><span class="t">19:30</span><span>Cook the Booths haul → <b>wood-fired hot tub under dark-sky stars</b>.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 8 · THU 17</span><span class="dtitle">Keswick — market, chippy, stones, pub</span></summary><div class="body">
+<div class="slot"><span class="t">08:30</span><span><b>Full English #2, cook's edition</b> — the hosts' Farmhouse Breakfast Hamper (£22, local-farm Cumberland sausages + bacon, pre-ordered, pay on arrival), cooked by you at the cabin.</span></div>
+<div class="slot"><span class="t">10:00</span><span><b>Keswick Railway Path</b>: walk Threlkeld → Keswick, 5 km flat tarmac (old rail line, tunnels, river). ~1h15. Car stays home.</span></div>
+<div class="slot"><span class="t">11:30</span><span><b>Keswick Thursday market</b> (08:00–17:00, ~80 stalls — Cumbrian cheese, bakers, crafts) + outdoor shops.</span></div>
+<div class="slot"><span class="t">12:45</span><span><b>Fish &amp; chips: The Kingfisher</b>, Main St (4.6★, Travellers' Choice — beats the famous-but-fading Old Keswickian).</span></div>
+<div class="slot"><span class="t">14:20</span><span>Bus X4/X5 back toward Threlkeld (10 min), collect car.</span></div>
+<div class="slot"><span class="t">15:00</span><span><b>Castlerigg Stone Circle</b> at golden hour (verge parking, 2-min field walk, sheep). Sunset 15:46 — leave by 16:10, torch out.</span></div>
+<div class="slot"><span class="t">19:00</span><span>Dinner: <b>Horse &amp; Farrier, Threlkeld</b> (5 min; book: 01768 779688) — ale-braised lamb + <b>sticky toffee pudding</b> in its homeland. Cartmel STP warming at home as backup.</span></div>
+<div class="slot"><span class="t">21:00</span><span>Final hot tub. Pack what you can.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 9 · FRI 18</span><span class="dtitle">South to London — car back, dinner 19:00</span></summary><div class="body">
+<div class="slot"><span class="t">08:00</span><span>Breakfast, fold laundry, load. Checkout per host (~10:00) but roll by 09:00.</span></div>
+<div class="slot"><span class="t">09:00</span><span>A66 → M6 south → M40. ~295 mi. Coffee ~10:15; lunch ~12:00 at services (speed over charm today).</span></div>
+<div class="slot"><span class="t">15:45</span><span><b>Fuel to full</b> before central London (A40 services / Edgware Rd). Approach via A40/Marylebone Rd — boundary road, no congestion charge.</span></div>
+<div class="slot"><span class="t">16:30</span><span><b>Return car — Enterprise Marylebone</b> (closes 18:00; you have buffer). Photos of car + fuel receipt.</span></div>
+<div class="slot"><span class="t">17:00</span><span>Check back into the <b>Novotel Paddington</b> (4 nights). Shower, change — sharp. Road trip done: ~1,100 miles, zero night driving.</span></div>
+<div class="slot"><span class="t">18:05</span><span><b>Elizabeth line Paddington → Liverpool Street</b> (~12 min, direct) to 22 Bishopsgate.</span></div>
+<div class="slot"><span class="t">19:00</span><span><b>THE FINALE: Restaurant Gordon Ramsay High</b> — Level 60, Michelin chef's-counter tasting, the City lit 900ft below. ✅ <b>BOOKED.</b> Today's buffer matters: leave the Lakes by 09:00 sharp, no exceptions — this is the one evening that cannot slip.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 10 · SAT 19</span><span class="dtitle">Bicester early + Belt Noodles + THE LION KING</span></summary><div class="body">
+<div class="slot"><span class="t">07:45</span><span>Grab-and-go breakfast — coffee + pastry at Paddington, eat on the move. No sit-down today.</span></div>
+<div class="slot"><span class="t">07:55</span><span>Bakerloo line Paddington → Marylebone (2 stops, ~5 min), then Chiltern train <b>Marylebone → Bicester Village</b>, ~50 min, every 30 min, ~£31 return.</span></div>
+<div class="slot"><span class="t">09:00</span><span><b>At the gates at opening.</b> Priority boutiques first — <b>09:00–12:00 is the quiet window</b> and it's all you need. Bag Drop £10 / Hands-Free £35. Download the Bicester app first. <b>No VAT refund exists (scheme ended 2021)</b> — outlet discount is the whole value.</span></div>
+<div class="slot"><span class="t">12:00</span><span><b>Hard stop</b> — out before the afternoon crush builds. Train back, Marylebone ~13:15; drop bags at the hotel if they're heavy.</span></div>
+<div class="slot"><span class="t">13:45</span><span><b>Viral lunch: Belt Noodles</b>, 19B Rupert St, Chinatown — hand-pulled belt noodles, cheap and fast. <b>Book the table via Dish Cult</b> and walk straight past the queue. <a href="https://www.dishcult.com/restaurant/beltnoodles">Book</a></span></div>
+<div class="slot"><span class="t">15:00</span><span>Chinatown lanterns → Regent St / Carnaby Christmas lights on foot. The West End at its December best.</span></div>
+<div class="slot"><span class="t">16:30</span><span>Back to the hotel — rest and change. Long evening ahead.</span></div>
+<div class="slot"><span class="t">17:50</span><span><b>Southbank Centre Winter Market</b> — mulled wine + a light graze only (dinner is not the point tonight), Illuminated River bridges on the walk <span class="badge">⚠ 2026 dates TBC — 11-year pattern says yes</span>.</span></div>
+<div class="slot"><span class="t">19:30</span><span><b>THE LION KING</b> — curtain up, Lyceum Theatre, Wellington St. 10 min on foot from Southbank over Waterloo Bridge. Runs ~2h30 incl. interval. <a href="https://thelionking.co.uk/">Tickets</a></span></div>
+<div class="slot"><span class="t">22:15</span><span>Out into the Covent Garden lights. Nightcap there, or Elizabeth line home from Tottenham Court Rd.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 11 · SUN 20</span><span class="dtitle">Sunday roast + Christmas at Kew</span></summary><div class="body">
+<div class="slot"><span class="t">10:30</span><span>Slow morning, Marylebone coffee. (Ramsay High is closed Sun/Mon — verified — which is why last night was the splurge.)</span></div>
+<div class="slot"><span class="t">13:00</span><span><b>Sunday roast at Blacklock Soho</b> (closest branch, ~15 min) — whole joints roasted over coals, Sundays only; open all day but <b>book weeks ahead</b>. <a href="https://theblacklock.com/sunday-roast/">Book</a></span></div>
+<div class="slot"><span class="t">15:00</span><span>Walk it off — Soho/Regent St windows or Regent's Park loop.</span></div>
+<div class="slot"><span class="t">16:45</span><span>District line to Kew Gardens stn (~45–50 min) or ~30 min cab.</span></div>
+<div class="slot"><span class="t">17:40</span><span><b>Christmas at Kew</b> — confirmed 13 Nov 2026–3 Jan 2027, slots 16:20–19:40, <b>3 km trail, 2h+</b>, £29.50–£37/adult. <span class="badge red">Tickets on sale NOW — sells fast</span> <a href="https://www.kew.org/kew-gardens/whats-on/christmas">Book</a></span></div>
+<div class="slot"><span class="t">20:30</span><span>Light supper near home — big food day already.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 12 · MON 21</span><span class="dtitle">Regency Café + Hogwarts in the Snow + skate under the lights</span></summary><div class="body">
+<div class="slot"><span class="t">08:00</span><span><b>Full English #3 — Regency Café</b>, 17-19 Regency St, Westminster (Art Deco institution since 1946; opens 07:00; set breakfast £9.99; queue moves fast; bring a card AND cash). Early sitting today — Hogwarts awaits.</span></div>
+<div class="slot"><span class="t">09:35</span><span>Euston → fast LNR train → Watford Junction (14–20 min, ~£15.20 return) → free shuttle (15 min).</span></div>
+<div class="slot"><span class="t">10:30</span><span><b>Warner Bros. Studio Tour — Hogwarts in the Snow</b> (book ~10:30 slot for this date). 3.5–4h: Great Hall in Christmas dress, snowy castle finale, draught Butterbeer in the tankard ~£9. <a href="https://www.wbstudiotour.co.uk/tickets/">Tickets</a></span></div>
+<div class="slot"><span class="t">15:00</span><span>Shuttle → train → Baker St ~16:15. Rest, then pack the big cases — tomorrow-you will thank you.</span></div>
+<div class="slot"><span class="t">18:15</span><span>Walk to <b>Hyde Park Winter Wonderland</b> (12 min from the hotel). Enter via your timed slot — <b>Blue Gate</b> is closest to the rink. Arrive 20 min before the session for skate fitting; spare socks if wet.</span></div>
+<div class="slot"><span class="t">19:00</span><span><b>ICE SKATE — the last-night finale</b>: UK's largest open-air rink, around the Victorian bandstand under the lights, 45-min session <span class="badge">⚠ 2026 on-sale ~Aug — entry ticket + rink session booked SEPARATELY; 2025 peak was £17.50pp, 2026 unverified</span></span></div>
+<div class="slot"><span class="t">20:00</span><span><b>Bavarian beer hall dinner</b> + mulled wine in the village — skate-earned. Backup if WW falls through: Market Place food hall, Leicester Square, or revisit whichever place won the trip.</span></div>
+</div></details>
+
+<details class="day"><summary><span class="dnum">DAY 13 · TUE 22</span><span class="dtitle">Borough Market farewell → fly 21:45</span></summary><div class="body">
+<div class="slot"><span class="t">10:00</span><span>Final canal-side breakfast, finish packing.</span></div>
+<div class="slot"><span class="t">11:00</span><span>Check out; store bags at the Novotel (standard at full-service hotels — confirm at check-in).</span></div>
+<div class="slot"><span class="t">12:00</span><span><b>Borough Market</b> (open Tuesdays ~10:00–17:00) — the farewell food lap: oysters, raclette, doughnuts, coffee. Tube Baker St → London Bridge ~20 min.</span></div>
+<div class="slot"><span class="t">14:30</span><span>Bankside stroll — Tate Modern Turbine Hall (free), Millennium Bridge, St Paul's view.</span></div>
+<div class="slot"><span class="t">16:15</span><span>Back to hotel, collect bags.</span></div>
+<div class="slot"><span class="t">17:00</span><span><b>Elizabeth line from Paddington → LHR</b> — the station is at the hotel's door, ~40 min direct. (Cab unnecessary now.)</span></div>
+<div class="slot"><span class="t">18:15</span><span>At terminal ~3.5h before the <b>21:45 flight</b> — lounge, last pint, home.</span></div>
+</div></details>
+</section>
+
+<!-- ================= TAB 2 BOOKINGS ================= -->
+<section id="t2" class="tab">
+<h2>Bookings &amp; Money</h2>
+<p class="note">Every booking in the trip. Edit amounts as you pay; set "Paid by" and the settlement updates live. Add rows for anything new. <b>Shared between both phones</b> — changes appear on the other device within 30 seconds. Watch the badge bottom-right for sync status.</p>
+<div class="wrap"><table id="btab">
+<thead><tr><th style="min-width:170px">Item</th><th>Day</th><th>Status</th><th style="min-width:80px">£</th><th>Paid by</th><th style="min-width:140px">Notes</th><th></th></tr></thead>
+<tbody id="bbody"></tbody>
+</table></div>
+<button class="btn g" onclick="addRow()">＋ Add item</button>
+<button class="btn" onclick="exportData()">⬇ Export data</button>
+<button class="btn" onclick="document.getElementById('imp').click()">⬆ Import data</button>
+<input type="file" id="imp" accept=".json" style="display:none" onchange="importData(event)">
+<div id="settle"></div>
+<p class="small">Settlement rule: a row counts once an amount is entered AND "Paid by" is set to Matt or Claire. Everything splits 50/50: each owes half of the combined paid total; the difference is settled by whoever paid less.</p>
+</section>
+
+<!-- ================= TAB 3 BOOK SOON ================= -->
+<section id="t3" class="tab">
+<h2>Book Soon — deadline order</h2>
+<div id="bslist"></div>
+</section>
+
+<!-- ================= TAB 4 INFO ================= -->
+<section id="t4" class="tab">
+<h2>Trip Info</h2>
+
+<div class="info"><h3>🧳 Packing (Singapore → UK December)</h3><ul>
+<li><b>3-layer system</b> beats one thick coat: wicking base + fleece/light down mid + waterproof shell.</li>
+<li><b>Waterproof jacket, NOT umbrella</b> — lakeside wind destroys umbrellas.</li>
+<li><b>Waterproof walking boots with grip</b> — the #1 purchase. Paths are muddy/icy and never gritted.</li>
+<li>Hat, gloves, scarf — damp cold bites extremities first.</li>
+<li>Torch (cabin farm track + Castlerigg), UK 3-pin adapters, meds.</li>
+</ul></div>
+
+<div class="info"><h3>🌦 December reality (Met Office averages)</h3><ul>
+<li>London 9°/3°C · Manchester 8°/1°C · Peak District 6°/1°C · Pitlochry ~7°/1°C · Lakes 8°/2°C.</li>
+<li>Rain days: 11–18/month by stop. Expect grey + drizzle; 2–4 crisp clear days if lucky.</li>
+<li><b>Sunset ~15:45 everywhere.</b> Big lakes do NOT freeze (Ullswater last froze 1963, Loch Lomond ~1880). Ground ice on clear mornings — walk after 10am.</li>
+</ul></div>
+
+<div class="info"><h3>🚗 Driving</h3><ul>
+<li>Left side, same as Singapore. Automatic must be reserved explicitly. No winter tyres needed (UK norm).</li>
+<li>Met Office warnings: <b>Yellow</b> = drive normally · <b>Amber</b> = delay/buffer the rural leg · <b>Red</b> = don't travel.</li>
+<li>A82, A66, M-ways gritted. Cabin track: no low-slung cars. Native + NCP car parks: 2.10m height limit.</li>
+<li>Rental: full-to-full fuel, photos at pickup AND return, licence + passport + driver's credit card.</li>
+</ul></div>
+
+<div class="info"><h3>💷 Money</h3><ul>
+<li><b>No tourist VAT refund since Jan 2021</b> — outlet/shop prices are final. Contactless works everywhere, incl. buses/trams/tube.</li>
+<li>Congestion charge: Marylebone Rd is boundary (free); weekends charged only from 12:00. Rental cars are ULEZ-compliant.</li>
+</ul></div>
+
+<div class="info"><h3>🍽 Must-eat checklist</h3><ul>
+<li>☐ Fish &amp; chips — The Kingfisher, Keswick (Day 8)</li>
+<li>☐ Full English ×3 — Koffee Pot (D4), cabin Cumberland (D8), Regency Café (D12)</li>
+<li>☐ Haggis, neeps &amp; tatties — Auld Smiddy, Pitlochry (D5)</li>
+<li>☐ Scottish smoked salmon at source — Dunkeld (D6)</li>
+<li>☐ Sunday roast — Blacklock (D11)</li>
+<li>☐ Sticky toffee pudding — Horse &amp; Farrier + Cartmel backup (D8)</li>
+<li>☐ Butterbeer — Studio Tour (D12)</li>
+<li>☐ SpudBros loaded jacket potato — Manchester off Market St, or the original Preston tram (D2/D5)</li>
+<li>☐ Bagels — Federal, Northern Quarter (D3)</li>
+<li>☐ Hand-pulled belt noodles — Belt Noodles, Chinatown (D10)</li>
+<li>Markets tally: Manchester crawl (D2) · Piccadilly Gardens (D4) · Chatsworth (D4) · Southbank (D10)</li>
+</ul></div>
+
+<div class="info"><h3>📞 Key contacts</h3><ul>
+<li>Enterprise Marylebone — 170 Marylebone Rd NW1 5AR</li>
+<li>Man City hospitality / Blair Athol Distillery 01796 482003 · Aran Bakery 01350 727029</li>
+<li>Dunkeld Smoked Salmon 01350 727639 · Auld Smiddy (Pitlochry) · Taybank (Dunkeld)</li>
+<li>Horse &amp; Farrier, Threlkeld 01768 779688 · Killiecrankie NTS · Pitlochry Dam 01796 484111</li>
+<li>Durrants/hotel fallback · Fern Cottage 01796 473840 · Port-na-Craig 01796 472777</li>
+<li>Hosts: Fiona &amp; Mark (Near Howe Cottages, Mungrisdale) — via Airbnb only</li>
+</ul></div>
+</section>
+</main>
+<div id="syncbadge" class="syncbadge" onclick="syncNow()" title="Tap to sync now">Connecting…</div>
+
+<script>
+/* ---------- storage with graceful fallback ---------- */
+var mem={};
+function sget(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}}
+function sset(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+
+/* ---------- tabs ---------- */
+function tab(ev,id){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('nav button').forEach(function(b){b.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+  ev.currentTarget.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+/* ---------- bookings data ---------- */
+var DEFAULT_BOOKINGS=[
+ {i:"Flights SIN–LHR return ×2",d:"D1/D13",s:"Booked",a:"",p:"",n:"key in what was paid"},
+ {i:"Novotel Paddington — 1 nt (10–11 Dec)",d:"D1",s:"To book",a:"",p:"",n:"Accor direct + ALL login; ~€197 est, re-quote 1 nt"},
+ {i:"Novotel Paddington — 4 nts (18–22 Dec)",d:"D9–13",s:"To book",a:"675",p:"",n:"€779 member rate ≈ £675 BEFORE points; apply 29,000 pts (−€580) at checkout"},
+ {i:"Native Manchester by Numa (3 nts, Fri–Mon)",d:"D2–5",s:"Booked",a:"399",p:"",n:"✅ £133/nt, 15% member rate, NON-REFUNDABLE Saver, booked direct numastays.com — set payer"},
+ {i:"Native parking ×3 days (YourParkingSpace)",d:"D2–5",s:"To book",a:"75",p:"",n:"£25/24h, 2.10m limit"},
+ {i:"Pitlochry Retreat Airbnb (2 nts)",d:"D5–7",s:"Booked",a:"295",p:"",n:"✅ booked — FREE cancellation until 1 Dec (£0 charge); set payer"},
+ {i:"Clough Head Cabin Airbnb (2 nts)",d:"D7–9",s:"Booked",a:"330",p:"",n:"✅ booked — S$567.98 charged 3 Dec; FREE cancel before 11 Dec, full refund; set payer when charged"},
+ {i:"Cabin Farmhouse Breakfast Hamper ×2",d:"D8",s:"To book",a:"22",p:"",n:"pre-order via host message; pay on arrival at reception"},
+ {i:"Enterprise car — auto SUV, Fri 08:00 → Fri 18",d:"D2–9",s:"To book",a:"",p:"",n:"pickup at branch opening — quote live"},
+ {i:"City vs Chelsea hospitality ×2",d:"D3",s:"Booked",a:"",p:"",n:"✅ bought — key in amount + payer"},
+ {i:"Harry Potter tickets ×2 (Mon 21, ~10:30)",d:"D12",s:"To book",a:"117",p:"",n:"£58.50pp 'from' — book NOW for the 21st"},
+ {i:"HP train Euston–Watford ×2",d:"D12",s:"On the day",a:"30",p:"",n:"off-peak return"},
+ {i:"Winter Wonderland entry + Ice Rink 19:00 ×2",d:"D12",s:"Waiting on-sale",a:"35",p:"",n:"on-sale ~Aug; entry + rink SEPARATE; £35 = 2025 peak est, unverified"},
+ {i:"The Lion King ×2 — Lyceum, Sat 19 Dec 19:30",d:"D10",s:"To book",a:"",p:"",n:"BOOK NOW — Xmas-week Saturday; Trishna dropped for this"},
+ {i:"Belt Noodles table ~13:45",d:"D10",s:"To book",a:"",p:"",n:"Dish Cult booking — skips the walk-in queue"},
+ {i:"Christmas at Chatsworth bundle ×2",d:"D4",s:"Waiting on-sale",a:"80",p:"",n:"£40pp — incl market+parking+house+trail"},
+ {i:"Erst 20:30",d:"D3",s:"To book",a:"",p:"",n:""},
+ {i:"Auld Smiddy Inn",d:"D5",s:"To book",a:"",p:"",n:"phone, week before"},
+ {i:"Taybank lunch",d:"D6",s:"To book",a:"",p:"",n:""},
+ {i:"Horse & Farrier dinner",d:"D8",s:"To book",a:"",p:"",n:"01768 779688"},
+ {i:"Blacklock Soho Sunday roast",d:"D11",s:"To book",a:"",p:"",n:"books out weeks ahead"},
+ {i:"Christmas at Kew timed entry ×2",d:"D11",s:"To book",a:"67",p:"",n:"£29.50–37pp — ON SALE NOW"},
+ {i:"Restaurant Gordon Ramsay High ×2",d:"D9",s:"Booked",a:"",p:"",n:"✅ Fri 18, 19:00 — key in amount + payer"},
+ {i:"Bicester train ×2",d:"D10",s:"On the day",a:"62",p:"",n:"~£31pp return"}
+];
+var bookings=[];
+try{var saved=sget('trip_bookings');bookings=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEFAULT_BOOKINGS))}catch(e){bookings=JSON.parse(JSON.stringify(DEFAULT_BOOKINGS))}
+
+var STATUSES=["To book","Booked","Paid","Waiting on-sale","Watch from 1 Sept","On the day"];
+function renderBookings(){
+  var tb=document.getElementById('bbody');tb.innerHTML='';
+  bookings.forEach(function(b,idx){
+    var tr=document.createElement('tr');
+    tr.innerHTML=
+     '<td><input type="text" value="'+esc(b.i)+'" onchange="upd('+idx+',\'i\',this.value)"></td>'+
+     '<td><input type="text" style="width:60px" value="'+esc(b.d)+'" onchange="upd('+idx+',\'d\',this.value)"></td>'+
+     '<td><select onchange="upd('+idx+',\'s\',this.value)">'+STATUSES.map(function(s){return '<option'+(s===b.s?' selected':'')+'>'+s+'</option>'}).join('')+'</select></td>'+
+     '<td><input type="number" min="0" step="0.01" value="'+esc(b.a)+'" onchange="upd('+idx+',\'a\',this.value)"></td>'+
+     '<td><select onchange="upd('+idx+',\'p\',this.value)"><option value=""'+(b.p===''?' selected':'')+'>—</option><option'+(b.p==='Matt'?' selected':'')+'>Matt</option><option'+(b.p==='Claire'?' selected':'')+'>Claire</option></select></td>'+
+     '<td><input type="text" value="'+esc(b.n)+'" onchange="upd('+idx+',\'n\',this.value)"></td>'+
+     '<td><button class="btn" style="margin:0;padding:4px 8px" onclick="delRow('+idx+')">✕</button></td>';
+    tb.appendChild(tr);
+  });
+  settle();
+}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function upd(i,k,v){bookings[i][k]=v;save();settle()}
+function addRow(){bookings.push({i:"",d:"",s:"To book",a:"",p:"",n:""});save();renderBookings()}
+function delRow(i){if(confirm('Remove this row?')){bookings.splice(i,1);save();renderBookings()}}
+function saveLocal(){sset('trip_bookings',JSON.stringify(bookings))}
+function save(){saveLocal();scheduleSync()}
+function settle(){
+  var m=0,c=0,committed=0;
+  bookings.forEach(function(b){
+    var a=parseFloat(b.a);if(isNaN(a)||a<=0)return;
+    committed+=a;
+    if(b.p==='Matt')m+=a;else if(b.p==='Claire')c+=a;
+  });
+  var paid=m+c,half=paid/2,line;
+  if(paid===0)line="No payments logged yet.";
+  else if(m===c)line="All square — nobody owes anything. 🎉";
+  else if(m>c)line="<span class='big'>Claire owes Matt £"+((m-c)/2).toFixed(2)+"</span>";
+  else line="<span class='big'>Matt owes Claire £"+((c-m)/2).toFixed(2)+"</span>";
+  document.getElementById('settle').innerHTML=
+   "<div>Committed trip total (all amounts entered): <b>£"+committed.toFixed(2)+"</b></div>"+
+   "<div>Paid so far: <b>£"+paid.toFixed(2)+"</b> — Matt £"+m.toFixed(2)+" · Claire £"+c.toFixed(2)+"</div>"+
+   "<div>Each share (50/50 of paid): £"+half.toFixed(2)+"</div>"+
+   "<div>"+line+"</div>";
+}
+function exportData(){
+  var blob=new Blob([JSON.stringify({bookings:bookings,booksoon:bsState},null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='trip-data.json';a.click();
+}
+function importData(ev){
+  var f=ev.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){try{var d=JSON.parse(r.result);if(d.bookings){bookings=d.bookings;save()}if(d.booksoon){bsState=d.booksoon;sset('trip_booksoon',JSON.stringify(bsState))}renderBookings();renderBS();alert('Imported ✔')}catch(e){alert('Import failed — not a valid trip-data.json')}};
+  r.readAsText(f);
+}
+
+/* ---------- book soon ---------- */
+var BS=[
+ {a:"Book Harry Potter ~10:30 slot, MON 21 Dec",w:"On sale now; Christmas week tightens fast",dl:"THIS WEEK",l:"https://www.wbstudiotour.co.uk/tickets/"},
+ {a:"Pitlochry ✅ + Clough Head Cabin ✅ BOTH BOOKED. Remaining: message cabin hosts the 4 questions + pre-order the £22 Farmhouse Breakfast Hamper",w:"New listing — get track/hot tub/check-in answers now; hamper pays on arrival",dl:"THIS WEEK",l:"https://www.airbnb.co.uk/rooms/1730455449005252948"},
+ {a:"Cabin host questions: ① check-in method / 15:30 flex ② track, gates, lighting, exact pin ③ hot tub — host-prepped or self-fired? heat time? wood included? ④ coin-op laundry — coins or card?",w:"New listing, zero reviews — remove unknowns",dl:"WITH BOOKING",l:""},
+ {a:"Book Novotel Paddington DIRECT on Accor (ALL login): 1 nt 10–11 + 4 nts 18–22, apply 29,000 points (−€580); check cancellation terms — cheapest rates may be non-refundable",w:"Booking.com already shows NO 18–22 availability — inventory pressure; points expire after 12 months inactivity",dl:"THIS WEEK",l:"https://all.accor.com/booking/en/accor/hotel/6455?dateIn=2026-12-18&nights=4&compositions=2"},
+ {a:"Native room ✅ BOOKED (£399, non-refundable). Remaining: book Native parking ×3 days via YourParkingSpace",w:"£25/24h, 2.10m height limit — December spaces tighten",dl:"THIS WEEK",l:""},
+ {a:"Book Enterprise Marylebone — AUTOMATIC SUV under 2.10m, Fri 11 → Fri 18",w:"Automatics sell out first in December",dl:"AUG",l:""},
+ {a:"Sign up: Chatsworth newsletter → buy 2× Christmas bundle (£40pp) the day it opens",w:"Final-Sunday parking sold out in past years",dl:"ON-SALE ALERT",l:"https://www.chatsworth.org/events/christmas/"},
+ {a:"Ramsay High — ✅ BOOKED for Fri 18 Dec 19:00. Just key the amount + payer into the Bookings tab",w:"Done — the finale is locked",dl:"DONE",l:"https://www.gordonramsayrestaurants.com/high/bishopsgate/"},
+ {a:"Book Christmas at Kew — Sun 20 Dec, ~17:40 slot",w:"Tickets on sale NOW and it sells fast; £29.50–37pp",dl:"NOW",l:"https://www.kew.org/kew-gardens/whats-on/christmas"},
+ {a:"Book Blacklock SOHO Sunday roast — Sun 20 Dec 13:00",w:"Roast sittings book out weeks ahead; Sundays only",dl:"NOV",l:"https://theblacklock.com/sunday-roast/"},
+ {a:"KO time confirmation, City vs Chelsea (TV pick) — risk now minimal: you sleep in Manchester the night before, any KO just changes tram time (doors = KO − 3h)",w:"Check so you know your morning shape",dl:"LATE OCT",l:"https://www.mancity.com/tickets/mens/man-city-v-chelsea-12-dec-2026"},
+ {a:"Check SpudBros Manchester (off Market St) open status; if not open, plan the Preston tram stop Mon 14",w:"Opening date unannounced as of July",dl:"NOV",l:""},
+ {a:"Book The Lion King ×2 — Lyceum, Sat 19 Dec 19:30 (Trishna dropped — no more big-ticket meals)",w:"Christmas-week Saturday evening — prime seats go fast",dl:"NOW",l:"https://thelionking.co.uk/"},
+ {a:"Book Erst — Sat 12, 20:30",w:"Post-match Saturday demand",dl:"NOV",l:""},
+ {a:"Blair Athol Signature Tour — book when Dec slots release",w:"Released ~6 months ahead",dl:"CHECK SEPT",l:"https://www.malts.com/en-gb/distilleries/blair-athol"},
+ {a:"Download Bicester Village app + register",w:"Points + perks from purchase #1",dl:"BEFORE TRIP",l:""},
+ {a:"Message Native re: early bag/room options (optional)",w:"Best-effort only — plan assumes bags in car",dl:"DEC",l:""},
+ {a:"Book Taybank lunch (Tue 15) + Auld Smiddy (Mon 14) + Horse & Farrier (Thu 17, 01768 779688)",w:"Small rooms, December",dl:"WEEK BEFORE",l:""},
+ {a:"Pre-trip call sheet: Aran Tue hours (01350 727029) · Pitlochry Dam · Queen's View · Booths Dec hours · Southbank 2026 dates · H&F Wed/Thu hours",w:"All flagged ⚠ unverified for 2026",dl:"WEEK BEFORE",l:""},
+ {a:"Book Belt Noodles table — Sat 19 Dec ~13:45 via Dish Cult + confirm Sat Dec hours",w:"Walk-in waits hit 30+ min — a booking skips the queue entirely",dl:"WEEK BEFORE",l:"https://www.dishcult.com/restaurant/beltnoodles"},
+ {a:"AUG on-sale: Winter Wonderland — book Mon 21 Dec evening entry slot + 19:00 Ice Rink session ×2 (booked SEPARATELY)",w:"Xmas-week evening rink sessions fill fast; 2025 peak £17.50pp — 2026 prices unverified",dl:"AUG",l:"https://hydeparkwinterwonderland.com/"}
+];
+var bsState={};
+try{var s2=sget('trip_booksoon');bsState=s2?JSON.parse(s2):{}}catch(e){bsState={}}
+function renderBS(){
+  var el=document.getElementById('bslist');el.innerHTML='';
+  BS.forEach(function(b,i){
+    var done=!!bsState[i];
+    var d=document.createElement('div');d.className='bs'+(done?' done':'');
+    d.innerHTML='<input type="checkbox" '+(done?'checked':'')+' onchange="bsT('+i+',this.checked)"><div><div class="dl">'+b.dl+'</div><div class="a">'+b.a+'</div><div class="w">'+b.w+(b.l?' · <a href="'+b.l+'" target="_blank">link</a>':'')+'</div></div>';
+    el.appendChild(d);
+  });
+}
+function bsT(i,v){bsState[i]=v;sset('trip_booksoon',JSON.stringify(bsState));renderBS();scheduleSync()}
+/* ---------- shared sync via Firebase Realtime Database ---------- */
+var SYNC_URL='https://london-47ed6-default-rtdb.asia-southeast1.firebasedatabase.app/trip.json';
+var syncRev='0',syncTimer=null,syncBusy=false,dirty=false;
+
+function hhmm(){var d=new Date();return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function badge(state,msg){var el=document.getElementById('syncbadge');if(el){el.className='syncbadge '+state;el.textContent=msg}}
+function editing(){var a=document.activeElement;return !!(a&&/INPUT|SELECT|TEXTAREA/.test(a.tagName))}
+
+function applyRemote(d){
+  bookings=d.bookings||[];
+  bsState=d.booksoon||{};
+  saveLocal();sset('trip_booksoon',JSON.stringify(bsState));
+  renderBookings();renderBS();
+}
+function apiLoad(){
+  return fetch(SYNC_URL+'?t='+Date.now()).then(function(r){
+    if(!r.ok)throw new Error('http '+r.status);
+    return r.json();
+  }).then(function(d){
+    if(d===null)return {ok:true,empty:true,bookings:[],booksoon:{},rev:'0'};
+    return {ok:true,bookings:d.bookings||[],booksoon:d.booksoon||{},rev:String(d.rev||'0')};
+  });
+}
+function apiSave(){
+  var rev=String(Date.now());
+  var body=JSON.stringify({bookings:bookings,booksoon:bsState,rev:rev});
+  return fetch(SYNC_URL,{method:'PUT',body:body}).then(function(r){
+    if(!r.ok)throw new Error('http '+r.status);
+    return {ok:true,rev:rev};
+  });
+}
+function syncLoad(seedIfEmpty){
+  badge('busy','Connecting…');
+  return apiLoad().then(function(d){
+    syncRev=d.rev||'0';
+    if(d.bookings&&d.bookings.length){applyRemote(d);badge('ok','Synced '+hhmm())}
+    else if(seedIfEmpty){pushSync()}
+    else{badge('ok','Synced '+hhmm())}
+  }).catch(function(){badge('off','Offline — saved on this device only')});
+}
+function scheduleSync(){
+  dirty=true;badge('busy','Saving…');
+  if(syncTimer)clearTimeout(syncTimer);
+  syncTimer=setTimeout(pushSync,1500);
+}
+function pushSync(){
+  syncBusy=true;badge('busy','Saving…');
+  apiSave().then(function(d){
+    syncRev=d.rev;dirty=false;badge('ok','Synced '+hhmm());
+  })
+  .catch(function(){badge('off','Offline — saved on this device only')})
+  .then(function(){syncBusy=false});
+}
+function syncNow(){if(dirty){pushSync()}else{syncLoad(false)}}
+setInterval(function(){
+  if(dirty||syncBusy||editing())return;
+  apiLoad().then(function(d){
+    if(d&&d.ok&&!d.empty&&d.rev!==syncRev){syncRev=d.rev;applyRemote(d);badge('ok','Updated '+hhmm())}
+  }).catch(function(){});
+},30000);
+
+renderBookings();renderBS();syncLoad(true);
+</script>
+</body>
+</html>
